@@ -19,9 +19,17 @@ export default class App extends React.Component {
     decrementValue = () => {
         this.setState({
             value: this.state.value - 1,
-            total_taps: this.state.total_taps - 1,
+            total_taps: this.state.total_taps + 1,
         });
         console.log(`value ${this.state.value - 1}`);
+    };
+
+    resetValues = () => {
+        this.setState({
+            value: this.state.value = 0,
+            total_taps: this.state.total_taps = 0,
+        });
+        console.log(`values reset`);
     };
 
     render() {
@@ -35,8 +43,10 @@ export default class App extends React.Component {
                 <View style={{flexDirection: 'row'}}>
                   <Button onPress={this.decrementValue} title='Decrease'/>
                   <Text>  </Text>
-                  <Button onPress={this.incrementValue} title='Increase'/>
+                  <Button onPress={this.incrementValue} title='Increase' />
                 </View>
+                  <Text style={{ fontSize: 20, marginBottom: -20 }}></Text>
+                <Button onPress={this.resetValues} title='Reset'/>
             </View>
         );
     }
